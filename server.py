@@ -19,17 +19,20 @@ def index():
 <p> Some helpful tools may be: </p>
 <ul> Dirb/Gobuster </ul>
 <ul> curl </ul>
-<ul> BurpSuite </ul>      
+<ul> BurpSuite </ul> 
+<ul> Browser Inspector </ul>
+<! NOTE: Don't forget the /curl page..... -->     
 </body>
 </html>
     """
+    # Note added for flag 5
     resp = make_response(page)
     # Set cookie for flag 3
     resp.set_cookie('admin', 'false')
     return resp
 
 # FLAG NUMBER ONE
-# User can isit a common website page
+# User can visit a common website page
 @app.route('/robots.txt', methods=['GET'])
 def robots():
     page = """
@@ -169,6 +172,68 @@ def agent():
         """
     return render_template('agent.html', agentVar=agent)
                     
+
+# FLAG NUMBER 5
+# User can request a webpage using Curl
+@app.route('/curl',methods = ['GET'])
+def curl():
+    # get user input
+    agent = request.headers.get('User-Agent')
+    agentLower = agent.lower()
+    if "curl" in agentLower:
+        page =  "You can use headless HTTP requests-- curl! flag{i_can_use_curl}"
+    else:
+        page = """
+<html>
+<head>
+    <title>Web Technology Practice </title>
+</head>
+<p> Visiting me in a browser? Old school.....
+</body>
+</html>
+        """
+    return page
+
+# FLAG NUMBER 6 
+# User can POST to a website
+@app.route('/post',methods = ['POST'])
+def post():
+    page = """
+<html>
+<head>
+    <title>Web Technology Practice </title>
+</head>
+<p> Good choice, you can POST! flag{i_can_change_HTTP_options}
+</body>
+</html>
+        """
+    return page
+
+@app.route('/post',methods = ['GET'])
+def postGET():
+    page = """
+<html>
+<head>
+    <title>Web Technology Practice </title>
+</head>
+<p> Not the right OPTION for this page...
+</body>
+</html>
+        """
+    return page
+
+@app.route('/post',methods = ['OPTION'])
+def postOPTIONS():
+    page = """
+<html>
+<head>
+    <title>Web Technology Practice </title>
+</head>
+<p> GET, POST, OPTION
+</body>
+</html>
+        """
+    return page
 
 
 if __name__ == '__main__':

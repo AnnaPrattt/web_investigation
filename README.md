@@ -21,7 +21,6 @@ python3 ./server.py
 ## Answers
 See the `waklkthrough.md` file for instrucitons on how to get each flag.
 
-
-
-### Sources
-* Dirb Common Wordlist. https://raw.githubusercontent.com/v0re/dirb/master/wordlists/common.txt
+## Future Work
+* Add flag 7 that requires specific content in a POST body
+* Add flag 8 that is hosted on an endpoint not listed in the common.txt DIRB wordlist

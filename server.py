@@ -22,7 +22,7 @@ def index():
 <ul> curl </ul>
 <ul> BurpSuite </ul> 
 <ul> Browser Inspector </ul>
-<! NOTE: Don't forget the /curl page..... -->     
+<! NOTE: Don't forget the /curl and /post pages..... -->     
 </body>
 </html>
     """
@@ -157,7 +157,7 @@ def agent():
     agent = request.headers.get('User-Agent')
     agentLower = agent.lower()
     if "blacksun" in agentLower:
-        page =  "Welcome, BlackSun member. flag{i_can_change_user_agents}"
+        page =  "Welcome, BlackSun member. 6"
     else:
         page = """
 <html>

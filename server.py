@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 from flask import Flask, request, make_response, render_template
 from urllib.parse import urlparse
 
@@ -25,7 +26,7 @@ def index():
 </body>
 </html>
     """
-    # Note added for flag 5
+    # HTML comment added for flag 5
     resp = make_response(page)
     # Set cookie for flag 3
     resp.set_cookie('admin', 'false')
@@ -51,7 +52,6 @@ def robots():
 
 # FLAG NUMBER TWO:
 # User can enumerate multiple webpages using Dirb/GoBuster
-
 @app.route('/xls', methods=['GET'])
 def xls():
     page = """
